@@ -1,37 +1,40 @@
 import SwiftUI
+import os.signpost
 
 struct ContentView: View {
-    @State private var count = 0
-    @State private var n = 10
-
+    private let performanceCalculator = PerformanceCalculator()
+    
+    private let n = 10
+    @State private var time: Double?
+    
     var body: some View {
         NavigationView{
             VStack {
 
                 Button("Run benchmark") {
-                    self.inc()
-                    self.bench() // Run the benchmark
+                    self.benchPerformance()
                 }
-
-                Text("\(self.count)")
 
             }.navigationTitle("BenchRunner")
         }
         .padding()
     }
-
-    func bench() {
-        let before = ProcessInfo.processInfo.systemUptime
-        FannkuchRedux().runBenchmark(n: self.n)
-        let after = ProcessInfo.processInfo.systemUptime
-        let time = after - before
-        print("Execution time: \(time)")
+    
+    func benchPerformance() {
+        DispatchQueue.main.async {
+            performanceCalculator.start()
+        }
+        DispatchQueue.global().async {
+            for i in 0...4 {
+                let timeStampBefore = ProcessInfo.processInfo.systemUptime
+                FannkuchRedux().runBenchmark(n: self.n)
+                let timeStampAfter = ProcessInfo.processInfo.systemUptime
+                self.time = timeStampAfter - timeStampBefore
+                print("Execution time (iteration \(i+1)): \(time!)")
+            }
+            performanceCalculator.pause()
+        }
     }
-
-    func inc() {
-        count += 1
-   }
-
 }
 
 struct ContentView_Previews: PreviewProvider {

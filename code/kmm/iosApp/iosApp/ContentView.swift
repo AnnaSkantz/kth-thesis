@@ -2,36 +2,39 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	@State private var count = 0
-	@State private var n = Int32(10)
+	private let performanceCalculator = PerformanceCalculator()
 
-	var body: some View {
-		NavigationView{
-            VStack {
+        private let n = Int32(10)
+        @State private var time: Double?
 
-                Button("Run benchmark") {
-                    self.inc()
-                    self.bench() // Run the benchmark
-                }
+        var body: some View {
+            NavigationView{
+                VStack {
 
-                Text("\(self.count)")
+                    Button("Run benchmark") {
+                        self.benchPerformance()
+                    }
 
-            }.navigationTitle("BenchRunner")
+                }.navigationTitle("BenchRunner")
+            }
+            .padding()
         }
-        .padding()
-	}
 
-	func bench() {
-	    let before = ProcessInfo.processInfo.systemUptime
-	    FannkuchRedux().runBenchmark(n: self.n)
-	    let after = ProcessInfo.processInfo.systemUptime
-        let time = after - before
-        print("Execution time: \(time)")
-	}
-
-	func inc() {
-        count += 1
-   }
+        func benchPerformance() {
+            DispatchQueue.main.async {
+                performanceCalculator.start()
+            }
+            DispatchQueue.global().async {
+                for i in 0...4 {
+                    let timeStampBefore = ProcessInfo.processInfo.systemUptime
+                    FannkuchRedux().runBenchmark(n: self.n)
+                    let timeStampAfter = ProcessInfo.processInfo.systemUptime
+                    self.time = timeStampAfter - timeStampBefore
+                    print("Execution time (iteration \(i+1)): \(time!)")
+                }
+                performanceCalculator.pause()
+            }
+        }
 
 }
 

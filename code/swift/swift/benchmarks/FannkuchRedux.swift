@@ -4,11 +4,11 @@
    contributed by Isaac Gouy
    transliterated from Rex Kerr's Scala program
  
-    version: Swift simple program
+   Version: Swift simple program
 */
 import Foundation
 
-class FannkuchRedux { // Added by A.S.
+class FannkuchRedux {
     
     func fannkuch(_ n: Int) -> Int {
         var perm = Array(repeating: 0, count: n),
@@ -44,7 +44,7 @@ class FannkuchRedux { // Added by A.S.
             var go = true
             while go {
                 if r == n {
-                    print("Checksum: \(checksum)")
+                    //print("Checksum: \(checksum)")
                     return flips
                 }
                 let p0 = perm1[0]
@@ -64,12 +64,11 @@ class FannkuchRedux { // Added by A.S.
         return flips
     }
     
-    func runBenchmark( n: Int) -> Int {
+    func runBenchmark( n: Int){
         let res = fannkuch(n)
         
         print("Pfannkuchen(\(n)) = \(res)")
-        
-        return res
+
     }
     
 }

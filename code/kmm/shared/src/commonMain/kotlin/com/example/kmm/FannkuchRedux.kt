@@ -49,7 +49,7 @@ class FannkuchRedux {
             // Use incremental change to generate another permutation
             while (true) {
                 if (r == n) {
-                    println("Checksum: " + checksum)
+                    // println("Checksum: " + checksum)
                     return maxFlipsCount
                 }
                 val perm0 = perm1[0]
