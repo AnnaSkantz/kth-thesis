@@ -5,6 +5,8 @@
    transliterated from Rex Kerr's Scala program
  
    Version: Swift simple program
+ 
+   modified slightly by Anna Skantz
 */
 import Foundation
 
@@ -30,7 +32,7 @@ class FannkuchRedux {
             k = perm[0]
             while k != 0 {
                 i = 0
-                while 2*i < k {
+                while 2*i < k {     
                     let t = perm[i]; perm[i] = perm[k-i]; perm[k-i] = t
                     i += 1
                 }

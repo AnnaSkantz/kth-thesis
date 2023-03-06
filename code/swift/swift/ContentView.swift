@@ -4,14 +4,13 @@ import os.signpost
 struct ContentView: View {
     private let performanceCalculator = PerformanceCalculator()
     
-    private let n = 10
     @State private var time: Double?
     
     var body: some View {
         NavigationView{
             VStack {
 
-                Button("Run benchmark") {
+                Button("Run Benchmark") {
                     self.benchPerformance()
                 }
 
@@ -25,9 +24,10 @@ struct ContentView: View {
             performanceCalculator.start()
         }
         DispatchQueue.global().async {
-            for i in 0...4 {
+            for i in 0...20 {
                 let timeStampBefore = ProcessInfo.processInfo.systemUptime
-                FannkuchRedux().runBenchmark(n: self.n)
+                //FannkuchRedux().runBenchmark(n: 10)
+                NBody().runBenchmark(n: 350000)
                 let timeStampAfter = ProcessInfo.processInfo.systemUptime
                 self.time = timeStampAfter - timeStampBefore
                 print("Execution time (iteration \(i+1)): \(time!)")
@@ -35,6 +35,7 @@ struct ContentView: View {
             performanceCalculator.pause()
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

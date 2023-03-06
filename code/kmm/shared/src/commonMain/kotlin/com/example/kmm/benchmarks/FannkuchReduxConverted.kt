@@ -1,4 +1,4 @@
-package com.example.kmm
+package com.example.kmm.benchmarks
 
 /* The Computer Language Benchmarks Game
    http://benchmarksgame.alioth.debian.org/
@@ -8,7 +8,7 @@ package com.example.kmm
    mostly auto-converted to Kotlin by Patrik Schwermer
 */
 
-class FannkuchRedux {
+class FannkuchReduxConverted {
     fun fannkuch(n: Int): Int {
         val perm = IntArray(n)
         val perm1 = IntArray(n)
@@ -70,9 +70,8 @@ class FannkuchRedux {
         }
     }
 
-    fun runBenchmark(n: Int): Int {
+    fun runBenchmark(n: Int) {
         var res = fannkuch(n)
         println("Pfannkuchen(" + n + ") = " + res)
-        return res
     }
 }

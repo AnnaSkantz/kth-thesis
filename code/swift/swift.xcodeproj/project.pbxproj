@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F8AD243429AE3398009BA54F /* Mandelbrot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD243329AE3398009BA54F /* Mandelbrot.swift */; };
+		F8AD243629AE3768009BA54F /* BinaryTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD243529AE3768009BA54F /* BinaryTrees.swift */; };
+		F8AD243929B1FF5F009BA54F /* NBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD243829B1FF5F009BA54F /* NBody.swift */; };
 		F8B7DFA929A7617D00E8C056 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7DFA829A7617D00E8C056 /* Protocols.swift */; };
 		F8B7DFAF29A79E6E00E8C056 /* PerformanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7DFAE29A79E6E00E8C056 /* PerformanceCalculator.swift */; };
 		F8E0BF04299F7EA700899286 /* swiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E0BF03299F7EA700899286 /* swiftApp.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F8AD243329AE3398009BA54F /* Mandelbrot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandelbrot.swift; sourceTree = "<group>"; };
+		F8AD243529AE3768009BA54F /* BinaryTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTrees.swift; sourceTree = "<group>"; };
+		F8AD243829B1FF5F009BA54F /* NBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBody.swift; sourceTree = "<group>"; };
 		F8B7DFA829A7617D00E8C056 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		F8B7DFAE29A79E6E00E8C056 /* PerformanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCalculator.swift; sourceTree = "<group>"; };
 		F8E0BF00299F7EA700899286 /* swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F8AD243729B1FF31009BA54F /* testFolder */ = {
+			isa = PBXGroup;
+			children = (
+				F8AD243329AE3398009BA54F /* Mandelbrot.swift */,
+				F8AD243529AE3768009BA54F /* BinaryTrees.swift */,
+			);
+			path = testFolder;
+			sourceTree = "<group>";
+		};
 		F8E0BEF7299F7EA700899286 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +117,7 @@
 		F8E0BF02299F7EA700899286 /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				F8AD243729B1FF31009BA54F /* testFolder */,
 				F8E0BF3929A3A25100899286 /* Info.plist */,
 				F8E0BF11299F7F7C00899286 /* benchmarks */,
 				F8E0BF03299F7EA700899286 /* swiftApp.swift */,
@@ -126,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				F8E0BF12299F7F9500899286 /* FannkuchRedux.swift */,
+				F8AD243829B1FF5F009BA54F /* NBody.swift */,
 			);
 			path = benchmarks;
 			sourceTree = "<group>";
@@ -279,9 +296,12 @@
 			files = (
 				F8E0BF06299F7EA700899286 /* ContentView.swift in Sources */,
 				F8E0BF13299F7F9500899286 /* FannkuchRedux.swift in Sources */,
+				F8AD243929B1FF5F009BA54F /* NBody.swift in Sources */,
 				F8B7DFAF29A79E6E00E8C056 /* PerformanceCalculator.swift in Sources */,
 				F8E0BF04299F7EA700899286 /* swiftApp.swift in Sources */,
+				F8AD243629AE3768009BA54F /* BinaryTrees.swift in Sources */,
 				F8B7DFA929A7617D00E8C056 /* Protocols.swift in Sources */,
+				F8AD243429AE3398009BA54F /* Mandelbrot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
