@@ -15,7 +15,7 @@ struct ContentView: View {
                 }
 
                 Button("Run NBody") {
-                    self.benchFannkuchRedux()
+                    self.benchNBody()
                 }
 
             }.navigationTitle("BenchRunner")
@@ -30,7 +30,7 @@ struct ContentView: View {
         DispatchQueue.global().async {
             print("Benchmarking FannkuchRedux")
             print("Kotlin Converted starting")
-            for i in 0...3 {
+            for i in 0...2 {
                 let timeStampBefore = ProcessInfo.processInfo.systemUptime
                 FannkuchReduxConverted().runBenchmark(n: Int32(10))
                 let timeStampAfter = ProcessInfo.processInfo.systemUptime
@@ -38,7 +38,7 @@ struct ContentView: View {
                 print("Execution time (iteration \(i+1)): \(time!)")
             }
             print("Kotlin Idiomatic starting")
-            for i in 0...3 {
+            for i in 0...2 {
                 let timeStampBefore = ProcessInfo.processInfo.systemUptime
                 FannkuchReduxIdiomatic().runBenchmark(n: Int32(10))
                 let timeStampAfter = ProcessInfo.processInfo.systemUptime
@@ -56,7 +56,7 @@ struct ContentView: View {
             DispatchQueue.global().async {
                 print("Benchmarking NBody")
                 print("Kotlin Converted starting")
-                for i in 0...3 {
+                for i in 0...2 {
                     let timeStampBefore = ProcessInfo.processInfo.systemUptime
                     NBodyConverted().runBenchmark(n: 350000)
                     let timeStampAfter = ProcessInfo.processInfo.systemUptime

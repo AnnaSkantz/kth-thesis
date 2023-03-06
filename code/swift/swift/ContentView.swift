@@ -10,8 +10,12 @@ struct ContentView: View {
         NavigationView{
             VStack {
 
-                Button("Run Benchmark") {
-                    self.benchPerformance()
+                Button("Run FannkuchRedux") {
+                    self.benchFannkuchRedux()
+                }
+                
+                Button("Run NBody") {
+                    self.benchNBody()
                 }
 
             }.navigationTitle("BenchRunner")
@@ -19,14 +23,31 @@ struct ContentView: View {
         .padding()
     }
     
-    func benchPerformance() {
+    func benchFannkuchRedux() {
         DispatchQueue.main.async {
             performanceCalculator.start()
         }
         DispatchQueue.global().async {
-            for i in 0...20 {
+            print("Benchmarking FannkuchRedux")
+            for i in 0...3 {
                 let timeStampBefore = ProcessInfo.processInfo.systemUptime
-                //FannkuchRedux().runBenchmark(n: 10)
+                FannkuchRedux().runBenchmark(n: 10)
+                let timeStampAfter = ProcessInfo.processInfo.systemUptime
+                self.time = timeStampAfter - timeStampBefore
+                print("Execution time (iteration \(i+1)): \(time!)")
+            }
+            performanceCalculator.pause()
+        }
+    }
+    
+    func benchNBody() {
+        DispatchQueue.main.async {
+            performanceCalculator.start()
+        }
+        DispatchQueue.global().async {
+            print("Benchmarking NBody")
+            for i in 0...3 {
+                let timeStampBefore = ProcessInfo.processInfo.systemUptime
                 NBody().runBenchmark(n: 350000)
                 let timeStampAfter = ProcessInfo.processInfo.systemUptime
                 self.time = timeStampAfter - timeStampBefore
